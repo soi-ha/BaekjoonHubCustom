@@ -45,8 +45,8 @@ async function parseData() {
 
 async function makeData(origin) {
   const { problem_description, problemId, level, result_message, division, language_extension, title, runtime, memory, code, language } = origin;
-  // const directory = await getDirNameByOrgOption(`2025/programmers/level${level}/${problemId}. ${convertSingleCharToDoubleChar(title)}`, language);
-  const directory = await getDirNameByOrgOption(`2025/programmers/level${level}`, language);
+  // const directory = await getDirNameByOrgOption(`프로그래머스/${level}/${problemId}. ${convertSingleCharToDoubleChar(title)}`, language);
+  const directory = await getDirNameByOrgOption(`AlgoPulja_2025/programmers/level${level}`, language);
   const levelWithLv = `${level}`.includes('lv') ? level : `lv${level}`.replace('lv', 'level ');
   const dateInfo = getDateString(new Date(Date.now()));
   const message = `[${levelWithLv}] Title: ${title}, Time: ${runtime}, Memory: ${memory}, Date: ${dateInfo} -BaekjoonHub`;
