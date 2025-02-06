@@ -14,7 +14,7 @@
 async function parseData() {
   const link = document.querySelector('head > meta[name$=url]').content.replace(/\?.*/g, '').trim();
   const problemId = document.querySelector('div.main > div.lesson-content').getAttribute('data-lesson-id');
-  const level = document.querySelector('body > div.main > div.lesson-content').getAttribute("data-challenge-level")
+  const level = document.querySelector('body > div.main > div.lesson-content').getAttribute('data-challenge-level');
   const division = [...document.querySelector('ol.breadcrumb').childNodes]
     .filter((x) => x.className !== 'active')
     .map((x) => x.innerText)
@@ -45,10 +45,11 @@ async function parseData() {
 
 async function makeData(origin) {
   const { problem_description, problemId, level, result_message, division, language_extension, title, runtime, memory, code, language } = origin;
-  const directory = await getDirNameByOrgOption(`프로그래머스/${level}/${problemId}. ${convertSingleCharToDoubleChar(title)}`, language);
+  // const directory = await getDirNameByOrgOption(`2025/programmers/level${level}/${problemId}. ${convertSingleCharToDoubleChar(title)}`, language);
+  const directory = await getDirNameByOrgOption(`2025/programmers/level${level}`, language);
   const levelWithLv = `${level}`.includes('lv') ? level : `lv${level}`.replace('lv', 'level ');
   const message = `[${levelWithLv}] Title: ${title}, Time: ${runtime}, Memory: ${memory} -BaekjoonHub`;
-  const fileName = `${convertSingleCharToDoubleChar(title)}.${language_extension}`;
+  const fileName = `${problemId}_${convertSingleCharToDoubleChar(title)}.${language_extension}`;
   const dateInfo = getDateString(new Date(Date.now()));
   // prettier-ignore
   const readme =
