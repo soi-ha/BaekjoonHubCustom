@@ -29,13 +29,11 @@ function markUploadedCSS(branches, directory) {
   uploadState.uploading = false;
   const elem = document.getElementById('BaekjoonHub_progress_elem');
   elem.className = 'markuploaded';
-  const uploadedUrl = "https://github.com/" +
-              Object.keys(branches)[0] + "/tree/" + 
-              branches[Object.keys(branches)[0]] + "/" + directory;
-  elem.addEventListener("click", function() {
+  const uploadedUrl = 'https://github.com/' + Object.keys(branches)[0] + '/tree/' + branches[Object.keys(branches)[0]] + '/' + directory;
+  elem.addEventListener('click', function () {
     window.location.href = uploadedUrl;
   });
-  elem.style.cursor = "pointer";
+  elem.style.cursor = 'pointer';
 }
 
 /**
@@ -66,7 +64,7 @@ function startUploadCountDown() {
  * @return {string} 포맷된 스트링
  */
 
-function getDateString(date){
+function getDateString(date) {
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
   const day = date.getDate().toString().padStart(2, '0');
@@ -74,5 +72,6 @@ function getDateString(date){
   const minutes = date.getMinutes().toString().padStart(2, '0');
   const seconds = date.getSeconds().toString().padStart(2, '0');
 
-  return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}:${seconds}`;
+  // return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}:${seconds}`;
+  return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
 }
