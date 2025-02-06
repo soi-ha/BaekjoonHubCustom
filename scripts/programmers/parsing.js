@@ -48,9 +48,9 @@ async function makeData(origin) {
   // const directory = await getDirNameByOrgOption(`2025/programmers/level${level}/${problemId}. ${convertSingleCharToDoubleChar(title)}`, language);
   const directory = await getDirNameByOrgOption(`2025/programmers/level${level}`, language);
   const levelWithLv = `${level}`.includes('lv') ? level : `lv${level}`.replace('lv', 'level ');
-  const message = `[${levelWithLv}] Title: ${title}, Time: ${runtime}, Memory: ${memory} -BaekjoonHub`;
-  const fileName = `${problemId}_${convertSingleCharToDoubleChar(title)}.${language_extension}`;
   const dateInfo = getDateString(new Date(Date.now()));
+  const message = `[${levelWithLv}] Title: ${title}, Time: ${runtime}, Memory: ${memory}, Date: ${dateInfo} -BaekjoonHub`;
+  const fileName = `${problemId}_${convertSingleCharToDoubleChar(title)}.${language_extension}`;
   // prettier-ignore
   const readme =
     `# [${levelWithLv}] ${title} - ${problemId} \n\n`
@@ -67,5 +67,6 @@ async function makeData(origin) {
     + `### 문제 설명\n\n`
     + `${problem_description}\n\n`
     + `> 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges`;
+
   return { problemId, directory, message, fileName, readme, code };
 }
